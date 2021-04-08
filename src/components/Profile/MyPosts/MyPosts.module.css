@@ -1,0 +1,14 @@
+.add_post {
+    margin-bottom: 10px;
+}
+.post_input {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 20px;
+}
+.post_btn {
+    padding: 6px 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+}

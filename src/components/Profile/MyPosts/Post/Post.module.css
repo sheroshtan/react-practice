@@ -1,0 +1,16 @@
+.post {
+    display: flex;
+    background-color: #fff;
+    padding: 10px;
+}
+.post img {
+    width: 50px;
+    margin-right: 10px;
+}
+.likes {
+    margin-left: auto;
+    align-self: flex-end;
+}
+.post + .post {
+    margin-top: 10px;
+}

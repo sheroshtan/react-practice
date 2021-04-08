@@ -1,0 +1,16 @@
+
+
+.dialog a{
+    color: #000;
+    text-decoration: none;
+}
+.dialog a:hover {
+    color: #fff;
+    cursor: pointer;
+}
+.dialog a.active {
+    color: #FFF;
+}
+.dialog + .dialog {
+    margin-top: 4px;
+}

@@ -1,0 +1,8 @@
+.header {
+    padding: 10px;
+    grid-area: h;
+    background-color: lavender;
+}
+.logo {
+    height: 40px;
+}

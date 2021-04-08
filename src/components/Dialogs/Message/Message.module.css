@@ -1,0 +1,15 @@
+.message {
+    display: flex;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #FFF;
+    border-radius: 9px;
+    max-width: 470px;
+}
+.message img {
+    width: 30px;
+    margin-right: 10px;
+}
+.message + .message {
+    margin-top: 4px;
+}

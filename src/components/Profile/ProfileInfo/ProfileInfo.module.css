@@ -1,0 +1,8 @@
+.profile {
+    display: flex;
+    margin-bottom: 10px;
+}
+.profile_photo {
+    width: 150px;
+    margin-right: 10px;
+}
