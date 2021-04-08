@@ -2,24 +2,22 @@ import React from "react";
 import Post from "./Post/Post";
 
 import s from './MyPosts.module.css';
-
+import {addPostAC, changePostInputAC} from "../../../redux/profile-reducer";
 
 const MyPosts = (props) => {
 
     const { postInputValue, postsData, dispatch } = props;
-
-    const newPostElement = React.createRef();
 
     const postsElements = postsData.map(({id,text,likes}) => {
         return <Post key={id} id={id} text={text} likes={likes}/>
     })
 
     const onAddPost = () => {
-        dispatch({type: 'ADD_POST'});
+        dispatch(addPostAC());
     }
 
-    const onPostInputChange = () => {
-        dispatch({type: 'CHANGE_POST_INPUT_VALUE', value: newPostElement.current.value});
+    const onPostInputChange = (e) => {
+        dispatch(changePostInputAC(e.target.value));
     }
 
     return (
@@ -29,7 +27,6 @@ const MyPosts = (props) => {
                     name="add-post"
                     className={s.post_input}
                     placeholder="type here..."
-                    ref={newPostElement}
                     value={postInputValue}
                     onChange={onPostInputChange}/>
                 <button

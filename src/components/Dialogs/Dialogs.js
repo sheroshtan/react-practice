@@ -3,17 +3,22 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 import s from './Dialogs.module.css';
+import { changeMessageInputAC, sendMessageAC } from "../../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
 
-    const addMessageInput = React.createRef();
+    const { data: { messageInputValue }, dispatch } = props;
 
     const dialogsElements = props.data.dialogs.map(({id, name}) => <DialogItem key={id} name={name} id={id}/>);
 
     const messagesElements = props.data.messages.map(({id, text}) => <Message key={id} id={id} text={text}/>);
 
     const sendMessage = () => {
-        console.log(addMessageInput.current.value)
+        dispatch(sendMessageAC());
+    }
+
+    const onChangeMessageInput = (e) => {
+        dispatch(changeMessageInputAC(e.target.value));
     }
 
     return (
@@ -32,7 +37,8 @@ const Dialogs = (props) => {
                 <div className={s.sendMessage}>
                     <textarea
                         className={s.message_input}
-                        ref={addMessageInput}/>
+                        onChange={onChangeMessageInput}
+                        value={messageInputValue}/>
                     <button
                         className={s.message_btn}
                         onClick={ sendMessage }>SEND</button>

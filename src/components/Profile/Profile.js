@@ -5,7 +5,6 @@ import MyPosts from "./MyPosts/MyPosts";
 //import s from './Profile.module.css';
 
 const Profile = (props) => {
-
     const { data: { posts, postInputValue }, dispatch } = props;
 
     return (

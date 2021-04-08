@@ -1,3 +1,6 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+
 const store = {
     _state: {
         profilePage: {
@@ -21,7 +24,8 @@ const store = {
                 {id: 2, text: "How are you?"},
                 {id: 3, text: "Where are you???"},
                 {id: 4, text: "Call me back"},
-            ]
+            ],
+            messageInputValue: ""
         }
     },
     getState() {
@@ -35,25 +39,10 @@ const store = {
     },
 
     dispatch(action) {
-        switch (action.type) {
-            case 'ADD_POST': {
-                const newPost = {
-                    id: this._state.profilePage.posts.length + 1,
-                    text: this._state.profilePage.postInputValue,
-                    likes: 0
-                }
-                this._state.profilePage.posts.push(newPost);
-                this._state.profilePage.postInputValue = "";
-                this.rerenderDOM(this._state);
-            }
-                break;
-            case 'CHANGE_POST_INPUT_VALUE': {
-                this._state.profilePage.postInputValue = action.value;
-                this.rerenderDOM(this._state);
-            } break;
-            default:
-                return this._state
-        }
+        this._state.profilePage =  profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+
+        this.rerenderDOM(this._state);
     }
 }
 
