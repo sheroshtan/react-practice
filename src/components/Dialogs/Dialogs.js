@@ -1,24 +1,24 @@
 import React from 'react';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-
 import s from './Dialogs.module.css';
-import { changeMessageInputAC, sendMessageAC } from "../../redux/dialogs-reducer";
+
 
 const Dialogs = (props) => {
 
-    const { data: { messageInputValue }, dispatch } = props;
+    const { dialogsItems, messagesItems,
+        sendMessage, changeMessageInput, messageInputValue } = props;
 
-    const dialogsElements = props.data.dialogs.map(({id, name}) => <DialogItem key={id} name={name} id={id}/>);
+    const dialogsElements = dialogsItems.map(({id, name}) => <DialogItem key={id} name={name} id={id}/>);
 
-    const messagesElements = props.data.messages.map(({id, text}) => <Message key={id} id={id} text={text}/>);
+    const messagesElements = messagesItems.map(({id, text}) => <Message key={id} id={id} text={text}/>);
 
-    const sendMessage = () => {
-        dispatch(sendMessageAC());
+    const onSendMessage = () => {
+        sendMessage();
     }
 
     const onChangeMessageInput = (e) => {
-        dispatch(changeMessageInputAC(e.target.value));
+        changeMessageInput(e.target.value);
     }
 
     return (
@@ -41,7 +41,7 @@ const Dialogs = (props) => {
                         value={messageInputValue}/>
                     <button
                         className={s.message_btn}
-                        onClick={ sendMessage }>SEND</button>
+                        onClick={ onSendMessage }>SEND</button>
                 </div>
             </div>
         </div>

@@ -1,7 +1,23 @@
 const SEND_MESSAGE = 'SEND_MESSAGE';
 const CHANGE_MESSAGE_INPUT_VALUE = "CHANGE_MESSAGE_INPUT_VALUE";
 
-const dialogsReducer = (state, action) => {
+let initialState = {
+    dialogs: [
+        {id: 1, name: "Sasha"},
+        {id: 2, name: "Roman"},
+        {id: 3, name: "Julia"},
+        {id: 4, name: "Daria"},
+    ],
+    messages: [
+        {id: 1, text: "Hello"},
+        {id: 2, text: "How are you?"},
+        {id: 3, text: "Where are you???"},
+        {id: 4, text: "Call me back"},
+    ],
+    messageInputValue: ""
+};
+
+const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SEND_MESSAGE:
             const newMessage = {

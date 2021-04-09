@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
 import {BrowserRouter} from "react-router-dom";
-import store from "./redux/state";
+import store from "./redux/redux-store";
 
 import './reset.css';
-
 
 const rerenderDOM = (state) => {
     ReactDOM.render(
@@ -18,6 +17,6 @@ const rerenderDOM = (state) => {
     );
 }
 
-store.observer(rerenderDOM);
+store.subscribe(() => rerenderDOM(store.getState()));
 
 rerenderDOM(store.getState());

@@ -31,7 +31,7 @@ const store = {
     getState() {
         return this._state;
     },
-    observer(func) {
+    subscribe(func) {
         this.rerenderDOM = func;
     },
     rerenderDOM() {
@@ -45,7 +45,3 @@ const store = {
         this.rerenderDOM(this._state);
     }
 }
-
-window.store = store;
-
-export default store;
